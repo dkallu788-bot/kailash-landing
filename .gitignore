@@ -2,3 +2,5 @@
 outlines/
 node_modules/
 .wrangler/
+images/*
+!images/web/
