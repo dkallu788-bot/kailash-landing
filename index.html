@@ -90,11 +90,21 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .hero-bg{position:absolute;inset:0;background:url('images/web/kailash-south-face.webp') center 35%/cover no-repeat}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(31,45,58,.9) 0%,rgba(31,45,58,.6) 42%,rgba(31,45,58,.1) 100%)}
 .hero .container{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
-.hero .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,175,55,.18);border:1px solid rgba(212,175,55,.5);color:var(--gold);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 16px;border-radius:9999px;margin-bottom:22px}
+.hero .badge{display:inline-flex;align-items:center;gap:8px;background:var(--gold);border:1px solid var(--gold);color:var(--navy);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:8px 16px;border-radius:9999px;margin-bottom:22px;animation:glow 2.4s ease-out infinite}
 .hero h1{color:#fff;font-size:clamp(38px,5.2vw,62px);font-weight:700;margin-bottom:8px}
 .hero h1 span{color:var(--gold)}
 .hero .h1-sub{font-family:'Playfair Display',serif;font-size:clamp(20px,2.2vw,26px);color:rgba(255,255,255,.9);margin-bottom:18px}
 .hero .lead{color:rgba(255,255,255,.85);font-size:17px;max-width:600px;margin-bottom:26px}
+@keyframes glow{0%{box-shadow:0 0 0 0 rgba(212,175,55,.6)}70%,100%{box-shadow:0 0 0 12px rgba(212,175,55,0)}}
+.ebo{position:relative;overflow:hidden;display:flex;align-items:center;gap:16px;max-width:620px;margin-bottom:28px;padding:16px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(212,175,55,.28),rgba(212,175,55,.08));border:1px solid rgba(212,175,55,.6);backdrop-filter:blur(4px)}
+.ebo::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-20deg);animation:shine 4.5s ease-in-out infinite;pointer-events:none}
+@keyframes shine{0%{left:-60%}55%,100%{left:130%}}
+.ebo .ic{width:50px;height:50px;border-radius:14px;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0}
+.ebo small{display:block;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.ebo b{display:block;color:#fff;font-size:18px;line-height:1.3;margin:2px 0}
+.ebo .sub{display:block;font-size:13px;color:rgba(255,255,255,.82)}
+.ebo .btn{margin-left:auto;padding:11px 18px;font-size:13.5px;position:relative;z-index:1;flex-shrink:0}
+@media(prefers-reduced-motion:reduce){.hero .badge,.ebo::after{animation:none}}
 .hero-stats{display:flex;flex-wrap:wrap;gap:22px;margin-bottom:30px;align-items:center}
 .hero-stats .s{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.9);font-size:14px}
 .hero-stats .s b{color:var(--gold);font-size:20px}
@@ -227,17 +237,28 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .alt-wrap svg{width:100%;height:auto}
 
 /* 5 · why us */
-.incs{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-.inc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 20px;box-shadow:var(--shadow);transition:.25s;position:relative}
-.inc:hover{transform:translateY(-4px);border-color:rgba(212,175,55,.6)}
-.inc i{width:50px;height:50px;border-radius:14px;background:rgba(212,175,55,.14);color:var(--gold-d);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px}
-.inc::after{content:"\f00c";font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;top:18px;right:18px;width:22px;height:22px;border-radius:50%;background:rgba(37,211,102,.15);color:#15803d;font-size:10px;display:flex;align-items:center;justify-content:center}
-.inc b{display:block;color:var(--navy);font-size:15.5px;margin-bottom:6px;line-height:1.3}
-.inc p{font-size:13.5px;line-height:1.55}
-.inc-bar{margin-top:24px;background:var(--navy);color:#fff;border-radius:16px;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.inc-bar>div{display:flex;gap:12px;align-items:center;font-size:14px;color:rgba(255,255,255,.85);flex:1;min-width:260px}
-.inc-bar>div i{color:var(--gold);font-size:20px}
-.inc-bar b{color:#fff}
+
+.gk{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}
+.gk-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px;box-shadow:var(--shadow)}
+.gk-card h3{font-size:20px;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.gk-card h3 i{color:var(--gold)}
+.inc-list{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+.inc-list li{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--ink-2);line-height:1.35}
+.inc-list li i{width:32px;height:32px;border-radius:9px;background:rgba(212,175,55,.14);color:var(--gold-d);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.gk-note{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);font-size:13px;color:var(--muted)}
+.gk-note b{color:var(--navy)}
+.steps2{list-style:none;margin-bottom:14px}
+.steps2 li{display:flex;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.steps2 li:last-child{border-bottom:0}
+.steps2 span{width:30px;height:30px;border-radius:50%;background:var(--gold);color:var(--navy);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.steps2 b{display:block;color:var(--navy);font-size:14.5px;line-height:1.3}
+.steps2 p{font-size:13px;line-height:1.5}
+.gk-more{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px;align-items:start}
+.gk-more .more{margin-top:0}
+.gk-more summary i{color:var(--gold);margin-right:8px}
+.gk-more .check li{font-size:14px;padding:7px 0 7px 32px}
+.gk-more .check li::before{top:8px}
+.gk-more .link{display:inline-block;margin-top:10px}
 
 /* 6 · founder & reviews */
 .founder{display:grid;grid-template-columns:320px 1fr;gap:48px;align-items:center}
@@ -246,7 +267,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .founder .sig{margin-top:20px}
 .founder .sig b{display:block;font-family:'Playfair Display',serif;font-size:22px;color:var(--navy)}
 .founder .sig small{color:var(--muted)}
-.tsts{display:grid;grid-template-columns:repeat(3,1fr);margin-top:80px;border-top:2px solid var(--ink)}
+.tsts{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--ink)}
 .tst{padding:30px 30px 10px 0;display:flex;flex-direction:column}
 .tst+.tst{padding-left:30px;border-left:1px solid var(--line)}
 .tst .stars{color:var(--gold);font-size:12px;letter-spacing:2px}
@@ -268,15 +289,6 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .masonry img{width:100%;margin-bottom:14px;border-radius:14px;break-inside:avoid}
 
 /* 7 · essentials + faq */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.steps .p{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;position:relative}
-.steps .p span{width:38px;height:38px;border-radius:50%;background:var(--gold);color:var(--navy);font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
-.steps .p b{display:block;color:var(--navy);margin-bottom:4px}
-.steps .p p{font-size:14px}
-.info h3{font-size:20px;display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.info h3 i{color:var(--gold)}
-.info .check li{font-size:14px;padding:7px 0 7px 32px}
-.info .check li::before{top:8px}
 .faq{max-width:860px;margin:0 auto}
 .faq-group{margin-bottom:28px}
 .faq-group h3{display:flex;align-items:center;gap:12px;font-size:20px;margin-bottom:14px}
@@ -330,9 +342,9 @@ footer a:hover{color:var(--gold)}
 .stickybar .btn{padding:11px 18px;font-size:13px}
 
 @media(max-width:1024px){
-  .g4,.pkgs,.steps{grid-template-columns:repeat(2,1fr)}
+  .g4,.pkgs{grid-template-columns:repeat(2,1fr)}
+  .gk,.gk-more{grid-template-columns:minmax(0,1fr)}
   .g3{grid-template-columns:repeat(2,1fr)}
-  .incs{grid-template-columns:repeat(3,1fr)}
   .trust .container{grid-template-columns:repeat(3,1fr)}
   .ptiles{grid-template-columns:repeat(3,1fr)}
   .hero .container,.finder,.offer,.final .container{grid-template-columns:minmax(0,1fr)}
@@ -350,12 +362,17 @@ footer a:hover{color:var(--gold)}
 @media(max-width:640px){
   section{padding:56px 0}
   .btn{white-space:normal;text-align:center}
-  .incs{grid-template-columns:1fr 1fr;gap:12px}
-  .inc{padding:18px 16px}
-  .g2,.g3,.g4,.pkgs,.steps,.f-grid,.ptiles{grid-template-columns:1fr}
+  .gk-card{padding:20px 16px}
+  .inc-list{gap:10px 12px}
+  .inc-list li{font-size:12.5px;gap:8px}
+  .inc-list li i{width:28px;height:28px;font-size:12px}
+  .g2,.g3,.g4,.pkgs,.f-grid,.ptiles{grid-template-columns:1fr}
   .vids{grid-template-columns:1fr 1fr}
   .trust .container{grid-template-columns:1fr 1fr}
   .hero{padding:56px 0 50px;min-height:auto}
+  .ebo{flex-wrap:wrap;gap:12px}
+  .ebo .btn{margin-left:0;width:100%}
+  .ebo b{font-size:16.5px}
   .hero-bot{height:500px}
   .finder{padding:24px 20px}
   .offer .l,.offer .r{padding:26px 22px}
@@ -401,6 +418,7 @@ footer a:hover{color:var(--gold)}
       <h1>Kailash Mansarovar Yatra <span>2027</span></h1>
       <p class="h1-sub">Overland from Kathmandu · Helicopter from Lucknow · Tour via Lhasa · Private</p>
       <p class="lead">Complete the sacred 3-day Kailash Parikrama and take the holy dip in Lake Mansarovar with a licensed team that has guided pilgrims since 2008. Full-Moon departures May – September 2027.</p>
+      <div class="ebo"><span class="ic"><i class="fas fa-gift"></i></span><div><small>Early Booking Offer · Limited Full-Moon seats</small><b>Reserve with just USD 300</b><span class="sub">Locks today's 2027 price + first pick of Full-Moon dates</span></div><a class="btn btn-gold" href="https://wa.me/15107369933?text=Hi%2C%20I%20want%20to%20claim%20the%20Early%20Booking%20Offer%20for%20Kailash%20Yatra%202027"><i class="fas fa-bolt"></i> Claim offer</a></div>
       <div class="hero-stats">
         <div class="s"><b>4.9</b><div><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>Google reviews</div></div>
         <div class="s"><b>5,000+</b> pilgrims guided</div>
@@ -597,7 +615,7 @@ footer a:hover{color:var(--gold)}
       </div>
       <div class="faq-group">
         <h3><i class="fas fa-tags"></i>Cost &amp; Inclusions</h3>
-        <details><summary>What does the yatra cost and what is included?</summary><div class="a">Per person, twin sharing: Overland 13 Days for Indian citizens ₹ 2,49,000 (₹ 2,59,000 in instalments) · Overland 14 Days for NRI / foreigners USD 2,300 · Helicopter 9 Days Ex. Lucknow USD 3,080 · Via Lhasa 15 Days on request. Prices include accommodation, vegetarian meals, transport, all Tibet permits, visa processing, guides and oxygen — see "What's included" below for the full list.</div></details>
+        <details><summary>What does the yatra cost and what is included?</summary><div class="a">Per person, twin sharing: Overland 13 Days for Indian citizens ₹ 2,49,000 (₹ 2,59,000 in instalments) · Overland 14 Days for NRI / foreigners USD 2,300 · Helicopter 9 Days Ex. Lucknow USD 3,080 · Via Lhasa 15 Days on request. Prices include accommodation, vegetarian meals, transport, all Tibet permits, visa processing, guides and oxygen — see "What's Included" below for the full list.</div></details>
         <details><summary>Are there any extra costs during the yatra?</summary><div class="a">Plan for international flights, travel insurance, the China visa fee for non-Indian passports (USD 260; USD 360 for US / Canada), an optional pony (approx. RMB 4,500–5,000) or porter (approx. RMB 1,300–1,500) on the Kora, and tips and personal expenses.</div></details>
       </div>
       <div class="faq-group">
@@ -615,12 +633,46 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <!-- =====================================================================
-     5 · JOURNEY HIGHLIGHTS — sacred places, itinerary
+     5 · FOUNDER MESSAGE & PILGRIM GROUPS
      ===================================================================== -->
-<section id="journey">
+<section id="founder">
+  <div class="container">
+    <div class="founder">
+      <img src="https://kailashtripplanner.com/storage/images/1/Avatars/12sd.webp" alt="Basanta Baral, Founder of Kailash Trip Planner" loading="lazy">
+      <div>
+        <span class="eyebrow"><span class="sec-num">5</span>A Message From Our Founder</span>
+        <blockquote>"At Kailash Trip Planner, we believe that a journey to Mount Kailash and Lake Mansarovar is far more than travel, it is a spiritual calling. Every pilgrim carries faith, emotions, and dreams, and our responsibility is to make that sacred journey comfortable, meaningful, and memorable. From the beginning, our vision has been to provide trusted guidance, honest service, and personal care to every traveler who chooses to journey with us. Thank you for placing your trust in us. We look forward to being part of your sacred journey."</blockquote>
+        <div class="sig"><b>Basanta Baral</b><small>Founder &amp; Managing Director, Kailash Trip Planner</small></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px">
+          <a class="btn btn-navy" href="https://www.youtube.com/@KailashTripPlanner" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> Watch our story</a>
+          <a class="btn btn-wa" href="https://wa.me/15107369933"><i class="fab fa-whatsapp"></i> Talk to our team</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row-head"><h3>Our pilgrim groups</h3><a class="link" href="https://www.google.com/search?q=Kailash+Trip+Planner+reviews" target="_blank" rel="noopener">Read all Google reviews →</a></div>
+    <div class="masonry">
+      <img src="images/web/group-kora-path.webp" alt="Pilgrim group on the Kora path" loading="lazy">
+      <img src="images/web/group-kailash-view.webp" alt="Pilgrims with Mount Kailash behind" loading="lazy">
+      <img src="images/web/group-mansarovar.webp" alt="Pilgrims at Lake Mansarovar" loading="lazy">
+      <img src="images/web/certificate.webp" alt="Pilgrim receiving a Yatra completion certificate" loading="lazy">
+      <img src="images/web/group-celebration.webp" alt="Pilgrims celebrating after the Parikrama" loading="lazy">
+      <img src="images/web/group-kora-valley.webp" alt="Pilgrim group in the Lha Chu valley" loading="lazy">
+      <img src="images/web/group-plateau.webp" alt="Pilgrim group on the Tibetan plateau" loading="lazy">
+      <img src="images/web/group-darchen.webp" alt="Pilgrim group near Darchen" loading="lazy">
+      <img src="images/web/group-kerung.webp" alt="Pilgrim group with their bus in Tibet" loading="lazy">
+      <img src="images/web/lake-mansarovar.webp" alt="Lake Mansarovar with mountains reflected" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     6 · JOURNEY HIGHLIGHTS — sacred places, itinerary
+     ===================================================================== -->
+<section class="gray" id="journey">
   <div class="container">
     <div class="sec-head">
-      <span class="eyebrow"><span class="sec-num">5</span>Journey Highlights</span>
+      <span class="eyebrow"><span class="sec-num">6</span>Journey Highlights</span>
       <h2>A Journey to the Abode of Shiva</h2>
     </div>
     <div class="bento">
@@ -712,52 +764,78 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <!-- =====================================================================
-     6 · WHAT'S INCLUDED
+     7 · WHAT'S INCLUDED & HOW TO BOOK
      ===================================================================== -->
 <section class="soft" id="why-us">
-  <div class="container" id="inclusions">
+  <div class="container">
     <div class="sec-head">
-      <span class="eyebrow"><span class="sec-num">6</span>What's Included</span>
-      <h2>Everything Included in Your Yatra</h2>
-      <p>One clear price covers your permits, stays, meals, transport and guides — no hidden charges.</p>
+      <span class="eyebrow"><span class="sec-num">7</span>Good to Know</span>
+      <h2>What's Included &amp; How to Book</h2>
     </div>
-    <div class="incs">
-      <div class="inc"><i class="fas fa-passport"></i><b>Permits &amp; China visa</b><p>All Tibet travel permits, Kailash &amp; Mansarovar entry tickets and China group visa processing.</p></div>
-      <div class="inc"><i class="fas fa-bed"></i><b>Hotels &amp; guesthouses</b><p>3-star hotels in Kathmandu; hotels in Kerung, Saga &amp; Darchen; guesthouses at Mansarovar and on the Kora.</p></div>
-      <div class="inc"><i class="fas fa-utensils"></i><b>Pure vegetarian meals</b><p>Breakfast, lunch &amp; dinner every day, cooked fresh by our own kitchen team.</p></div>
-      <div class="inc"><i class="fas fa-bus"></i><b>All ground transport</b><p>Tourist vehicles / private bus in Nepal and Tibet, plus airport pickup &amp; drop.</p></div>
-      <div class="inc"><i class="fas fa-user-shield"></i><b>Experienced guides</b><p>Nepali escort and English-speaking Tibetan guide with you throughout.</p></div>
-      <div class="inc"><i class="fas fa-lungs"></i><b>Oxygen &amp; medical support</b><p>Oxygen in every vehicle, first-aid kit and emergency evacuation management.</p></div>
-      <div class="inc"><i class="fas fa-om"></i><b>Kathmandu darshan</b><p>Pashupatinath, Boudhanath &amp; Budhanilkantha sightseeing in Kathmandu.</p></div>
-      <div class="inc"><i class="fas fa-praying-hands"></i><b>Puja &amp; hawan</b><p>Holy dip, puja and hawan arrangements on the shore of Lake Mansarovar.</p></div>
-      <div class="inc"><i class="fas fa-suitcase"></i><b>Yatra kit</b><p>Duffle bag, cap, jacket and trekking stick for every pilgrim.</p></div>
-      <div class="inc"><i class="fas fa-file-invoice"></i><b>Fees &amp; taxes</b><p>Langtang National Park entry fee and all government taxes &amp; service charges.</p></div>
+    <div class="gk">
+      <div class="gk-card" id="inclusions">
+        <h3><i class="fas fa-check-circle"></i>Included in your yatra</h3>
+        <ul class="inc-list">
+          <li><i class="fas fa-passport"></i>Permits &amp; China visa</li>
+          <li><i class="fas fa-bed"></i>Hotels &amp; guesthouses</li>
+          <li><i class="fas fa-utensils"></i>Pure veg meals · B, L, D</li>
+          <li><i class="fas fa-bus"></i>All ground transport</li>
+          <li><i class="fas fa-user-shield"></i>Nepali escort + Tibetan guide</li>
+          <li><i class="fas fa-lungs"></i>Oxygen &amp; medical support</li>
+          <li><i class="fas fa-om"></i>Kathmandu darshan</li>
+          <li><i class="fas fa-praying-hands"></i>Puja &amp; hawan at Mansarovar</li>
+          <li><i class="fas fa-suitcase"></i>Yatra kit — bag, cap, jacket, stick</li>
+          <li><i class="fas fa-file-invoice"></i>Park fees &amp; govt. taxes</li>
+        </ul>
+        <p class="gk-note"><b>One clear price · no hidden charges.</b> Shown for the overland yatra — helicopter and Lhasa inclusions vary slightly.</p>
+      </div>
+      <div class="gk-card" id="essentials">
+        <h3><i class="fas fa-route"></i>Book in 4 easy steps</h3>
+        <ol class="steps2">
+          <li><span>1</span><div><b>Choose your date</b><p>WhatsApp us your departure and a colour passport scan.</p></div></li>
+          <li><span>2</span><div><b>Pay the deposit</b><p><strong>USD 300</strong> per person locks your seat and 2027 price.</p></div></li>
+          <li><span>3</span><div><b>We process permits</b><p>Send documents 45–60 days before; we handle visa &amp; permits.</p></div></li>
+          <li><span>4</span><div><b>Balance &amp; begin</b><p>Pay before departure or on arrival in Kathmandu.</p></div></li>
+        </ol>
+        <a class="btn btn-wa btn-sm" href="https://wa.me/15107369933?text=Hi%2C%20I%20want%20to%20book%20the%20Kailash%20Yatra%202027"><i class="fab fa-whatsapp"></i> Start on WhatsApp</a>
+      </div>
     </div>
-    <div class="inc-bar">
-      <div><i class="fas fa-shield-alt"></i><span><b>One clear price · no hidden charges.</b> Shown for the overland yatra — helicopter and Lhasa inclusions vary slightly; ask us for details.</span></div>
-      <a class="btn btn-gold btn-sm" href="#dates"><i class="far fa-calendar-check"></i> See 2027 dates &amp; prices</a>
+    <div class="gk-more">
+      <details class="more"><summary><span><i class="fas fa-heartbeat"></i>Health &amp; altitude</span></summary><div class="in"><ul class="check">
+            <li>Walk 5–8 km daily for 2–3 months before; ideal BMI 27 or below</li>
+            <li>Doctor's fitness certificate for travel above 5,000 m</li>
+            <li>Drink 3–4 litres of water a day; walk slowly; no alcohol</li>
+            <li>Not advised for severe heart disease, uncontrolled BP, severe asthma or pregnancy</li>
+            <li>Age 12–70 (70+ with medical clearance)</li>
+      </ul></div></details>
+      <details class="more"><summary><span><i class="fas fa-folder-open"></i>Documents to send</span></summary><div class="in"><ul class="check">
+            <li>Passport valid 6+ months, 2 blank pages + colour scan</li>
+            <li>4 passport photos, white background</li>
+            <li>Doctor's fitness certificate</li>
+            <li>Travel insurance covering 6,000 m &amp; helicopter rescue</li>
+            <li>Booking form · OCI card copy for OCI / NRI pilgrims</li>
+      </ul></div></details>
+      <details class="more"><summary><span><i class="fas fa-file-contract"></i>Cancellation policy</span></summary><div class="in"><ul class="check">
+            <li>Deposit is non-refundable once permit processing has started</li>
+            <li>30+ days before departure — balance refunded minus permit / visa costs</li>
+            <li>Within 30 days — charges as per Terms &amp; Conditions</li>
+            <li>No refund for early return or unused services</li>
+      </ul><a class="link" href="https://kailashtripplanner.com/terms-and-conditions" target="_blank" rel="noopener">Full Terms &amp; Conditions →</a></div></details>
     </div>
+    <div class="note warn"><strong>Important:</strong> Don't book non-refundable flights until we confirm your Tibet permit. Rules can change at short notice — in 2025 all groups were denied Charan Sparsh (touching Kailash's base), so we do not promise it.</div>
   </div>
 </section>
 
 <!-- =====================================================================
-     7 · FOUNDER & REVIEWS
+     8 · PILGRIM REVIEWS — testimonials, video reviews
      ===================================================================== -->
 <section id="reviews">
   <div class="container">
-    <div class="founder">
-      <img src="https://kailashtripplanner.com/storage/images/1/Avatars/12sd.webp" alt="Basanta Baral, Founder of Kailash Trip Planner" loading="lazy">
-      <div>
-        <span class="eyebrow"><span class="sec-num">7</span>A Message From Our Founder</span>
-        <blockquote>"At Kailash Trip Planner, we believe that a journey to Mount Kailash and Lake Mansarovar is far more than travel, it is a spiritual calling. Every pilgrim carries faith, emotions, and dreams, and our responsibility is to make that sacred journey comfortable, meaningful, and memorable. From the beginning, our vision has been to provide trusted guidance, honest service, and personal care to every traveler who chooses to journey with us. Thank you for placing your trust in us. We look forward to being part of your sacred journey."</blockquote>
-        <div class="sig"><b>Basanta Baral</b><small>Founder &amp; Managing Director, Kailash Trip Planner</small></div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px">
-          <a class="btn btn-navy" href="https://www.youtube.com/@KailashTripPlanner" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> Watch our story</a>
-          <a class="btn btn-wa" href="https://wa.me/15107369933"><i class="fab fa-whatsapp"></i> Talk to our team</a>
-        </div>
-      </div>
+    <div class="sec-head">
+      <span class="eyebrow"><span class="sec-num">8</span>Reviews</span>
+      <h2>What Pilgrims Say</h2>
+      <p>Honest words from pilgrims who completed their Kailash yatra with us.</p>
     </div>
-
     <div class="tsts">
       <div class="tst"><span class="stars">★★★★★</span><p class="q">"Incredibly well-managed for such a specialized and rare package. The Kerung border crossing was smooth and the team handled all Tibet entry formalities. Highly recommended for serious devotees."</p><div class="who"><img src="https://kailashtripplanner.com/storage/images/1/Reviews-Kailash-Mansarovar-Overland-Tour-from-Kathmandu/SophieWalker.webp" alt="Sophie Walker" loading="lazy"><div><b>Sophie Walker</b><small>United Kingdom · May 2025</small></div></div></div>
       <div class="tst"><span class="stars">★★★★★</span><p class="q">"I personally wanted the bus route because I felt a pilgrimage should take time. It was not always comfortable, but that was part of the experience for me. In the end I was very satisfied."</p><div class="who"><img src="https://kailashtripplanner.com/storage/images/1/Reviews-Kailash-Mansarovar-Overland-Tour-from-Kathmandu/LauraGmez.webp" alt="Laura Gómez" loading="lazy"><div><b>Laura Gómez</b><small>Spain · Feb 2024</small></div></div></div>
@@ -772,73 +850,6 @@ footer a:hover{color:var(--gold)}
       <a class="vid" href="https://www.youtube.com/watch?v=waQKXur6yaM" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/waQKXur6yaM/hqdefault.jpg" alt="Milena Noach video testimonial" loading="lazy"><i class="fas fa-play"></i><span>Milena Noach<small>Costa Rica</small></span></a>
       <a class="vid" href="https://www.youtube.com/watch?v=9lCB2p80dFc" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/9lCB2p80dFc/hqdefault.jpg" alt="Rajesh Rajbanshi video testimonial" loading="lazy"><i class="fas fa-play"></i><span>Rajesh Rajbanshi<small>Australia</small></span></a>
     </div>
-
-    <div class="row-head"><h3>Our pilgrim groups</h3><a class="link" href="https://www.google.com/search?q=Kailash+Trip+Planner+reviews" target="_blank" rel="noopener">Read all Google reviews →</a></div>
-    <div class="masonry">
-      <img src="images/web/group-kora-path.webp" alt="Pilgrim group on the Kora path" loading="lazy">
-      <img src="images/web/group-kailash-view.webp" alt="Pilgrims with Mount Kailash behind" loading="lazy">
-      <img src="images/web/group-mansarovar.webp" alt="Pilgrims at Lake Mansarovar" loading="lazy">
-      <img src="images/web/certificate.webp" alt="Pilgrim receiving a Yatra completion certificate" loading="lazy">
-      <img src="images/web/group-celebration.webp" alt="Pilgrims celebrating after the Parikrama" loading="lazy">
-      <img src="images/web/group-kora-valley.webp" alt="Pilgrim group in the Lha Chu valley" loading="lazy">
-      <img src="images/web/group-plateau.webp" alt="Pilgrim group on the Tibetan plateau" loading="lazy">
-      <img src="images/web/group-darchen.webp" alt="Pilgrim group near Darchen" loading="lazy">
-      <img src="images/web/group-kerung.webp" alt="Pilgrim group with their bus in Tibet" loading="lazy">
-      <img src="images/web/lake-mansarovar.webp" alt="Lake Mansarovar with mountains reflected" loading="lazy">
-    </div>
-  </div>
-</section>
-
-<!-- =====================================================================
-     8 · HOW TO BOOK & ESSENTIAL INFORMATION
-     ===================================================================== -->
-<section class="soft" id="essentials">
-  <div class="container">
-    <div class="sec-head">
-      <span class="eyebrow"><span class="sec-num">8</span>Essential Information</span>
-      <h2>How to Book &amp; What to Know</h2>
-    </div>
-
-    <div class="steps">
-      <div class="p"><span>1</span><b>Choose your date</b><p>WhatsApp us your preferred departure and a colour scan of your passport.</p></div>
-      <div class="p"><span>2</span><b>Pay the deposit</b><p><strong>USD 300 per person</strong> confirms your seat and locks the 2027 price.</p></div>
-      <div class="p"><span>3</span><b>We process permits</b><p>Send your documents 45–60 days before; we apply for the visa and all Tibet permits.</p></div>
-      <div class="p"><span>4</span><b>Balance &amp; begin</b><p>Pay the balance before departure or on arrival in Kathmandu — bank transfer, card or cash.</p></div>
-    </div>
-
-    <div class="grid g3 info" style="margin-top:26px">
-      <div class="card">
-        <h3><i class="fas fa-heartbeat"></i>Health &amp; altitude</h3>
-        <ul class="check">
-          <li>Walk 5–8 km daily for 2–3 months before; ideal BMI 27 or below</li>
-          <li>Doctor's fitness certificate for travel above 5,000 m required</li>
-          <li>Drink 3–4 litres of water a day; walk slowly; no alcohol</li>
-          <li>Not advised for severe heart disease, uncontrolled BP, severe asthma or pregnancy</li>
-          <li>Age 12–70 (70+ with medical clearance)</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3><i class="fas fa-folder-open"></i>Documents to send</h3>
-        <ul class="check">
-          <li>Passport valid 6+ months, 2 blank pages + colour scan</li>
-          <li>4 passport photos, white background</li>
-          <li>Doctor's fitness certificate</li>
-          <li>Travel insurance covering 6,000 m &amp; helicopter rescue</li>
-          <li>Booking form · OCI card copy for OCI / NRI pilgrims</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3><i class="fas fa-file-contract"></i>Cancellation policy</h3>
-        <ul class="check">
-          <li>Deposit is non-refundable once permit processing has started</li>
-          <li>30+ days before departure — balance refunded minus actual permit / visa costs</li>
-          <li>Within 30 days — charges as per Terms &amp; Conditions</li>
-          <li>No refund for early return or unused services</li>
-        </ul>
-        <a class="btn btn-line btn-sm" style="margin-top:14px" href="https://kailashtripplanner.com/terms-and-conditions" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Full Terms &amp; Conditions</a>
-      </div>
-    </div>
-    <div class="note warn"><strong>Important:</strong> Do not book non-refundable international flights until we confirm your Tibet permit. Chinese authorities occasionally change rules at short notice — in 2025 all groups were denied Charan Sparsh (touching Kailash's base), so we do not promise it.</div>
   </div>
 </section>
 
